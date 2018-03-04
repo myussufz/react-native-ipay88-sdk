@@ -1,0 +1,29 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": [
+    "flow-vars"
+  ],
+  "rules": {
+    "eqeqeq": [
+      2,
+      "smart"
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "no-param-reassign": 0,
+    "no-console": 0
+  }
+}
