@@ -1,14 +1,14 @@
 //
 //  IPay88.m
-//  mall
 //
 //  Created by yussuf on 2/28/18.
 //  Copyright © 2018 Facebook. All rights reserved.
 //
 
 #import "IPay88.h"
-#import "AppDelegate.h"
 #import <React/RCTLog.h>
+#import <React/RCTView.h>
+#import <React/RCTRootView.h>
 
 @interface IPay88 ()
 
@@ -29,7 +29,6 @@ RCT_EXPORT_MODULE();
 RCT_EXPORT_METHOD(pay:(NSDictionary *)data)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // RCTLogInfo(@"%@", data);
 
     // Precreate payment
@@ -52,7 +51,9 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)data)
     
     self.paymentsdk.delegate = self;
     self.paymentView = [self.paymentsdk checkout:self.payment];
-    [appDelegate.rootViewController.view addSubview:self.paymentView];
+    
+    UIViewController *ctrl = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [ctrl.view addSubview:self.paymentView];
   });
 }
 
