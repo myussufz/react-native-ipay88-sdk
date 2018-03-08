@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		90B991A9204D97A600D11239 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B991A8204D97A600D11239 /* libipay88sdk.a */; };
-		90B991AC204D97B300D11239 /* IPay88.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B991AA204D97B300D11239 /* IPay88.m */; };
+		90D15C212050793000A55741 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D15C202050793000A55741 /* libipay88sdk.a */; };
+		B3E7B58A1CC2AC0600A0062D /* RNIpay88Sdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNIpay88Sdk.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +25,11 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNIpay88Sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNIpay88Sdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		90B991A8204D97A600D11239 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libipay88sdk.a; sourceTree = "<group>"; };
-		90B991AA204D97B300D11239 /* IPay88.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPay88.m; sourceTree = "<group>"; };
-		90B991AB204D97B300D11239 /* IPay88.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPay88.h; sourceTree = "<group>"; };
+		90D15C202050793000A55741 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libipay88sdk.a; sourceTree = "<group>"; };
+		90D15C26205079AF00A55741 /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpayPayment.h; sourceTree = "<group>"; };
+		90D15C28205079AF00A55741 /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ipay.h; sourceTree = "<group>"; };
+		B3E7B5881CC2AC0600A0062D /* RNIpay88Sdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNIpay88Sdk.h; sourceTree = "<group>"; };
+		B3E7B5891CC2AC0600A0062D /* RNIpay88Sdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNIpay88Sdk.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90B991A9204D97A600D11239 /* libipay88sdk.a in Frameworks */,
+				90D15C212050793000A55741 /* libipay88sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,17 +55,19 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				90B991AB204D97B300D11239 /* IPay88.h */,
-				90B991AA204D97B300D11239 /* IPay88.m */,
+				90D15C28205079AF00A55741 /* Ipay.h */,
+				90D15C26205079AF00A55741 /* IpayPayment.h */,
+				B3E7B5881CC2AC0600A0062D /* RNIpay88Sdk.h */,
+				B3E7B5891CC2AC0600A0062D /* RNIpay88Sdk.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
-				90B991A7204D97A600D11239 /* Frameworks */,
+				90D15C1F2050793000A55741 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		90B991A7204D97A600D11239 /* Frameworks */ = {
+		90D15C1F2050793000A55741 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				90B991A8204D97A600D11239 /* libipay88sdk.a */,
+				90D15C202050793000A55741 /* libipay88sdk.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,7 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90B991AC204D97B300D11239 /* IPay88.m in Sources */,
+				B3E7B58A1CC2AC0600A0062D /* RNIpay88Sdk.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
