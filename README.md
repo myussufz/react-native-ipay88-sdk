@@ -1,4 +1,4 @@
-# ipay88-sdk
+# React Native ipay88-sdk
 
 ## Getting started
 
