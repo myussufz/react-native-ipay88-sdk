@@ -64,7 +64,7 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)data)
   
   NSDictionary *params =
   @{
-     @"transactionID": transId,
+     @"transactionId": transId,
      @"referenceNo": refNo,
      @"amount": amount,
      @"remark": remark,
@@ -83,7 +83,7 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)data)
   
   NSDictionary *params =
   @{
-    @"transactionID": transId,
+    @"transactionId": transId,
     @"referenceNo": refNo,
     @"amount": amount,
     @"remark": remark,
@@ -102,7 +102,7 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)data)
   NSDictionary *params =
   @{
     @"authorizationCode": authCode,
-    @"transactionID": transId,
+    @"transactionId": transId,
     @"referenceNo": refNo,
     @"amount": amount,
     @"remark": remark,

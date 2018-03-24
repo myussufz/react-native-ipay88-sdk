@@ -67,7 +67,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         public void onPaymentSucceeded (String transId, String refNo, String amount, String remarks, String authCode)
         {
             WritableMap params = Arguments.createMap();
-            params.putString("transactionID", transId);
+            params.putString("transactionId", transId);
             params.putString("referenceNo", refNo);
             params.putString("amount", amount);
             params.putString("remark", remarks);
@@ -78,7 +78,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         public void onPaymentFailed (String transId, String refNo, String amount, String remarks, String err)
         {
             WritableMap params = Arguments.createMap();
-            params.putString("transactionID", transId);
+            params.putString("transactionId", transId);
             params.putString("referenceNo", refNo);
             params.putString("amount", amount);
             params.putString("remark", remarks);
@@ -89,7 +89,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         public void onPaymentCanceled (String transId, String refNo, String amount, String remarks, String errDesc)
         {
             WritableMap params = Arguments.createMap();
-            params.putString("transactionID", transId);
+            params.putString("transactionId", transId);
             params.putString("referenceNo", refNo);
             params.putString("amount", amount);
             params.putString("remark", remarks);

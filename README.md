@@ -52,30 +52,42 @@ import IPay88, { Pay } from "ipay88-sdk";
 export default class App extends Component {
   successNotify = data => {
     if (Platform.OS === "ios") {
-      Alert.alert("Message", `Payment authcode is ${data.authorizationCode}`, {
+      const {
+        transactionId,
+        referenceNo,
+        amount,
+        remark,
+        authorizationCode
+      } = data;
+
+      Alert.alert("Message", `Payment authcode is ${authorizationCode}`, {
         cancelable: true
       });
     } else {
       ToastAndroid.show(
-        `Message: Payment authcode is ${data.authorizationCode}`,
+        `Message: Payment authcode is ${authorizationCode}`,
         ToastAndroid.LONG
       );
     }
   };
 
   cancelNotify = data => {
+    const { transactionId, referenceNo, amount, remark, error } = data;
+
     if (Platform.OS === "ios") {
-      Alert.alert("Message", `${data.error}`, { cancelable: true });
+      Alert.alert("Message", `${error}`, { cancelable: true });
     } else {
-      ToastAndroid.show(`Message: ${data.error}`, ToastAndroid.LONG);
+      ToastAndroid.show(`Message: ${error}`, ToastAndroid.LONG);
     }
   };
 
   failedNotify = data => {
+    const { transactionId, referenceNo, amount, remark, error } = data;
+
     if (Platform.OS === "ios") {
-      Alert.alert("Message", `${data.error}`, { cancelable: true });
+      Alert.alert("Message", `${error}`, { cancelable: true });
     } else {
-      ToastAndroid.show(`Message: ${data.error}`, ToastAndroid.LONG);
+      ToastAndroid.show(`Message: ${error}`, ToastAndroid.LONG);
     }
   };
 
@@ -125,3 +137,46 @@ export default class App extends Component {
   }
 }
 ```
+
+### Make Payment
+
+// Refer to ipay88 docs for more info
+
+* paymentId // optional
+* merchantKey // required
+* merchantCode // required
+* referenceNo // required
+* amount // required
+* currency // required
+* productDescription // required
+* userName // required
+* userEmail // required
+* userContact // required
+* remark // optional
+* utfLang // optional
+* country // required
+* backendUrl // required
+
+### Success Notify
+
+* transactionId
+* referenceNo
+* amount
+* remark
+* authorizationCode
+
+### Failed Notify
+
+* transactionId
+* referenceNo
+* amount
+* remark
+* error
+
+### Cancel Notify
+
+* transactionId
+* referenceNo
+* amount
+* remark
+* error
