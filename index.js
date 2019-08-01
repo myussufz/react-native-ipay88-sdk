@@ -12,6 +12,10 @@ const iosEvent = new NativeEventEmitter(IPay88);
 
 const isAndroid = Platform.OS === "android";
 
+let successSubscription;
+let failedSubscription;
+let cancelSubscription;
+
 export default class IPay extends Component {
   static propTypes = {
     successNotify: PropTypes.func.isRequired,
@@ -22,21 +26,27 @@ export default class IPay extends Component {
   componentWillMount() {
     if (isAndroid) {
       // Android
-      DeviceEventEmitter.addListener("ipay88:success", data =>
+      successSubscription = DeviceEventEmitter.addListener("ipay88:success", data =>
         this.onSuccess(data)
       );
-      DeviceEventEmitter.addListener("ipay88:failed", data =>
+      failedSubscription = DeviceEventEmitter.addListener("ipay88:failed", data =>
         this.onFailed(data)
       );
-      DeviceEventEmitter.addListener("ipay88:canceled", data =>
+      cancelSubscription = DeviceEventEmitter.addListener("ipay88:canceled", data =>
         this.onCanceled(data)
       );
     } else {
       // ios
-      iosEvent.addListener("ipay88:success", data => this.onSuccess(data));
-      iosEvent.addListener("ipay88:failed", data => this.onFailed(data));
-      iosEvent.addListener("ipay88:canceled", data => this.onCanceled(data));
+      successSubscription = iosEvent.addListener("ipay88:success", data => this.onSuccess(data));
+      failedSubscription = iosEvent.addListener("ipay88:failed", data => this.onFailed(data));
+      cancelSubscription = iosEvent.addListener("ipay88:canceled", data => this.onCanceled(data));
     }
+  }
+
+  componentWillUnmount() {
+    successSubscription.remove()
+    failedSubscription.remove()
+    cancelSubscription.remove()
   }
 
   onSuccess = data => {
