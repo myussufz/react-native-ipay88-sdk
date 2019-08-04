@@ -1,6 +1,6 @@
 {
   "name": "ipay88-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["react-native"],
+  "keywords": ["react-native", "ipay88", "sdk"],
   "author": "Mohamed Yussuf",
   "license": "MIT"
 }
