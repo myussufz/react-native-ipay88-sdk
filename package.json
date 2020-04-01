@@ -4,7 +4,7 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yikkok-yong/react-native-ipay88-sdk.git"
+    "url": "git+https://github.com/magicwebes/ipay88-sdk.git"
   },
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "ipay88",
     "sdk"
   ],
-  "author": "Yik Kok Yong",
+  "author": "Mohamed Yussuf",
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.8.1",
