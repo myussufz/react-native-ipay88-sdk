@@ -16,8 +16,8 @@ android {
     buildToolsVersion "25.0.0"
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 22
+        minSdkVersion 17
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -32,6 +32,7 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile files('libs/ipay88_androidv7.jar')
+    // compile files('libs/ipay88_androidv7.jar')
+
+    compile files('libs/ipayhosted_standardSDK_06052020.aar')
 }
-  
