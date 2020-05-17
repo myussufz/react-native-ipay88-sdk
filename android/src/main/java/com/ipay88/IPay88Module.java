@@ -4,7 +4,7 @@ package com.ipay88;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.NativeModule;
@@ -15,9 +15,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.ipay.Ipay;
-import com.ipay.IpayPayment;
-import com.ipay.IpayResultDelegate;
+import com.ipay.IPayIH;
+import com.ipay.IPayIHPayment;
+import com.ipay.IPayIHResultDelegate;
 
 import java.io.Serializable;
 
@@ -42,7 +42,7 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         context = getReactApplicationContext();
 
         // Precreate payment
-        IpayPayment payment = new IpayPayment();
+        IPayIHPayment payment = new IPayIHPayment();
         payment.setMerchantKey (data.getString("merchantKey"));
         payment.setMerchantCode (data.getString("merchantCode"));
         payment.setPaymentId (data.getString("paymentId"));
@@ -58,49 +58,65 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         payment.setCountry (data.getString("country"));
         payment.setBackendPostURL (data.getString("backendUrl"));
 
-        Intent checkoutIntent = Ipay.getInstance().checkout(payment, getReactApplicationContext(), new ResultDelegate());
+        Intent checkoutIntent = IPayIH.getInstance().checkout(payment, context, new ResultDelegate(),
+          IPayIH.PAY_METHOD_CREDIT_CARD);
+
         checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(checkoutIntent);
     }
 
-    static public class ResultDelegate implements IpayResultDelegate, Serializable {
-        public void onPaymentSucceeded (String transId, String refNo, String amount, String remarks, String authCode)
+    static public class ResultDelegate implements IPayIHResultDelegate, Serializable {
+        public void onPaymentSucceeded (String TransId, String RefNo, String Amount, String Remark, String AuthCode)
         {
             WritableMap params = Arguments.createMap();
-            params.putString("transactionId", transId);
-            params.putString("referenceNo", refNo);
-            params.putString("amount", amount);
-            params.putString("remark", remarks);
-            params.putString("authorizationCode", authCode);
+            params.putString("transactionId", TransId);
+            params.putString("referenceNo", RefNo);
+            params.putString("amount", Amount);
+            params.putString("remark", Remark);
+            params.putString("authorizationCode", AuthCode);
             sendEvent(context, "ipay88:success", params);
         }
 
-        public void onPaymentFailed (String transId, String refNo, String amount, String remarks, String err)
+        public void onPaymentFailed (String TransId, String RefNo, String Amount, String Remark, String ErrDesc)
         {
             WritableMap params = Arguments.createMap();
-            params.putString("transactionId", transId);
-            params.putString("referenceNo", refNo);
-            params.putString("amount", amount);
-            params.putString("remark", remarks);
-            params.putString("error", err);
+            params.putString("transactionId", TransId);
+            params.putString("referenceNo", RefNo);
+            params.putString("amount", Amount);
+            params.putString("remark", Remark);
+            params.putString("error", ErrDesc);
             sendEvent(context, "ipay88:failed", params);
         }
 
-        public void onPaymentCanceled (String transId, String refNo, String amount, String remarks, String errDesc)
+        public void onPaymentCanceled (String TransId, String RefNo, String Amount, String Remark, String ErrDesc)
         {
             WritableMap params = Arguments.createMap();
-            params.putString("transactionId", transId);
-            params.putString("referenceNo", refNo);
-            params.putString("amount", amount);
-            params.putString("remark", remarks);
-            params.putString("error", errDesc);
+            params.putString("transactionId", TransId);
+            params.putString("referenceNo", RefNo);
+            params.putString("amount", Amount);
+            params.putString("remark", Remark);
+            params.putString("error", ErrDesc);
             sendEvent(context, "ipay88:canceled", params);
         }
 
-        public void onRequeryResult (String merchantCode, String refNo, String amount, String result)
+        @Override
+        public void onConnectionError(String merchantCode, String merchantKey, String RefNo, String Amount, String Remark, String lang, String country) {
+            WritableMap params = Arguments.createMap();
+            params.putString("merchantCode", merchantCode);
+            params.putString("referenceNo", RefNo);
+            params.putString("amount", Amount);
+            params.putString("remark", Remark);
+            params.putString("language", lang);
+            params.putString("country",country);
+            params.putString("error","Error connecting to IPay server");
+            sendEvent(context, "ipay88:canceled", params);
+        }
+
+        public void onRequeryResult (String merchantCode, String RefNo, String Amount, String result)
         {
             // No need to implement
         }
+
     }
 
     static void sendEvent(ReactContext reactContext, String eventName, @Nullable WritableMap params) {
