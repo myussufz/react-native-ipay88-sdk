@@ -11,6 +11,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["react-native", "ipay88", "sdk"],
-  "author": "Mohamed Yussuf",
+  "author": "Mohamed Yussuf, Eugene Maning",
   "license": "MIT"
 }
