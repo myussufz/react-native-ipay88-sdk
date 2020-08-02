@@ -1,10 +1,10 @@
 {
-  "name": "rn-ipay88",
-  "version": "1.0.0",
+  "name": "react-native-ipay88-sdk",
+  "version": "1.0.4",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yikkok-yong/react-native-ipay88-sdk.git"
+    "url": "git+https://github.com/myussufz/react-native-ipay88-sdk.git"
   },
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "ipay88",
     "sdk"
   ],
-  "author": "Yik Kok Yong",
+  "author": "Mohamed Yussuf",
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.8.1",
