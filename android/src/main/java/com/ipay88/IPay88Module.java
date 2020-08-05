@@ -2,12 +2,10 @@ package com.ipay88;
 
 
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -23,6 +21,7 @@ import java.io.Serializable;
 
 /**
  * Created by yussuf on 2/28/18.
+ * Forked by Yik Kok on 31/3/2020
  */
 
 public class IPay88Module extends ReactContextBaseJavaModule {

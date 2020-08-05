@@ -1,16 +1,28 @@
 {
   "name": "ipay88-sdk",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/magicwebes/ipay88-sdk.git"
+    "url": "git+https://github.com/myussufz/react-native-ipay88-sdk.git"
   },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["react-native", "ipay88", "sdk"],
+  "keywords": [
+    "react-native",
+    "ipay88",
+    "sdk"
+  ],
   "author": "Mohamed Yussuf",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
+  }
 }
